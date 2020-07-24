@@ -16,7 +16,7 @@ import DateTimePicker from "react-datetime-picker";
 
 function App() {
   const [dateTime, setDateTime] = useState(new Date());
-  const [selectFormat, setSelectFormat] = useState("DD MM YY");
+  const [selectFormat, setSelectFormat] = useState("eee MMMM y");
   const [dateWithTime, setDateWithTime] = useState(true);
   const [initialName, setInitialName] = useState("Created");
   const [separator, setSeparator] = useState("/");
@@ -80,16 +80,13 @@ function App() {
         >
           <Box>
             <div className="each-changer">
+              <label>Preview Past Date</label>
               <DateTimePicker
                 onChange={(e) => onChangeDateTime(e)}
                 value={dateTime}
                 maxDate={new Date()}
                 clearIcon={null}
-                // amPmAriaLabel=""
-                // dayPlaceholder={null}
-                // defaultView=""
-                // disableClock={true}
-                // monthPlaceholder={false}
+                format="y-MM-dd h:mm a"
               />
             </div>
 
@@ -99,21 +96,21 @@ function App() {
                 placeholder="Select option"
                 onChange={(e) => setSelectFormat(e.target.value)}
               >
-                <option value="DD mm YY">
-                  Day, Month and Year all in numbers (DD mm YY)
+                <option value="eee MM y">
+                  Day, Month and Year all in numbers (eee MM y)
                 </option>
-                <option value="DD MM YY">
-                  Month full name. Day and Year in numbers (DD MM YY)
+                <option value="eee MMMM y">
+                  Month full name(wide). Day and Year in numbers (eee MMMM y)
                 </option>
-                <option value="DD M YY">
-                  Month short name. Day and Year in numbers (DD M YY)
+                <option value="eee MMM y">
+                  Month short name. Day and Year in numbers (eee MMM y)
                 </option>
-                <option value="dd mm YY">
-                  Day with both name and number, Month and Year in numbers (dd
-                  mm YY)
+                <option value="d MM y">
+                  Day with both name and number, Month and Year in numbers (d MM
+                  y)
                 </option>
-                <option value="DD mm yy">
-                  Day and Month in numbers. Year only last two digits. (DD mm
+                <option value="eee MM yy">
+                  Day and Month in numbers. Year only last two digits. (eee MM
                   yy)
                 </option>
               </Select>

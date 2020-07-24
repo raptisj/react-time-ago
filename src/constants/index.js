@@ -59,12 +59,12 @@ export const MESSAGE = {
 };
 
 export const DATE_TYPES = {
-  dd: "dd",
-  DD: "DD",
-  mm: "mm",
-  M: "M",
+  d: "d",
+  eee: "eee",
   MM: "MM",
+  MMM: "MMM",
+  MMMM: "MMMM",
   yy: "yy",
-  YY: "YY",
+  y: "y",
   tt: "tt",
 };

@@ -75,8 +75,8 @@ const TimeAgo = ({
   const getDateFormat = (format, separatorSymbol, hasTime) => {
     const separatorsGroup = /[-/ ]/;
 
-    const daysSlot = format.split(separatorsGroup)[0] || "dd";
-    const monthsSlot = format.split(separatorsGroup)[1] || "mm";
+    const daysSlot = format.split(separatorsGroup)[0] || "d";
+    const monthsSlot = format.split(separatorsGroup)[1] || "MM";
     const yearsSlot = format.split(separatorsGroup)[2] || "yy";
 
     return `${position(date, daysSlot)}
@@ -87,42 +87,42 @@ const TimeAgo = ({
      ${hasTime ? `at ${position(date, "tt")}` : ""}`;
   };
 
-  const { dd, DD, mm, M, MM, yy, YY, tt } = DATE_TYPES;
-  function position(date, d) {
-    switch (d) {
-      case dd:
+  const { d, eee, MM, MMM, MMMM, yy, y, tt } = DATE_TYPES;
+  function position(date, type) {
+    switch (type) {
+      case eee:
         return (
           daysOfWeek[new Date(date).getDay()] + ", " + new Date(date).getDate()
         );
 
-      case DD:
+      case d:
         return new Date(date).getDate();
 
-      case mm:
+      case MM:
         return new Date(date).getMonth() + 1;
 
-      case M:
-        return getMonthWord(new Date(date).getMonth(), M);
+      case MMM:
+        return getMonthWord(new Date(date).getMonth(), MMM);
 
-      case MM:
-        return getMonthWord(new Date(date).getMonth(), MM);
+      case MMMM:
+        return getMonthWord(new Date(date).getMonth(), MMMM);
 
       case yy:
         return String(new Date(date).getFullYear()).match(/^\d{2}(\d{2})$/)[1];
 
-      case YY:
+      case y:
         return new Date(date).getFullYear();
 
       case tt:
         return new Date(date).getHours() + ":" + new Date(date).getMinutes();
 
       default:
-        throw new Error(`Whoops! ${d} is not valid time symbol.`);
+        throw new Error(`Whoops! ${type} is not valid time symbol.`);
     }
   }
 
   const getMonthWord = (month, shortLongWord) => {
-    const monthWord = shortLongWord === MM ? monthFullName : monthShortName;
+    const monthWord = shortLongWord === MMMM ? monthFullName : monthShortName;
     return monthWord[month];
   };
 

@@ -69,3 +69,14 @@ header h1::before {
   display: inline-block;
   margin-top: 10px;
 }
+
+.react-datetime-picker__inputGroup__year,
+.react-datetime-picker__inputGroup__leadingZero,
+.react-datetime-picker__inputGroup__year
+  + .react-datetime-picker__inputGroup__divider,
+.react-datetime-picker__inputGroup__input--hasLeadingZero,
+.react-datetime-picker__inputGroup__day,
+.react-datetime-picker__inputGroup__input--hasLeadingZero
+  + .react-datetime-picker__inputGroup__divider {
+  display: none;
+}
