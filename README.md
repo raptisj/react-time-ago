@@ -1,6 +1,6 @@
 ![logo-time-ago](./src/logo-time-ago.png)
 
-#React-Time-Ago
+# React-Time-Ago
 
 This is a reusable component that tells you how much time was passed from a given date..
 
