@@ -27,6 +27,7 @@ const TimeAgo = ({
     calculateTime();
   }, 60000);
 
+  // this useEffect is just for the landing page
   useEffect(() => {
     calculateTime();
   }, [dateFormat, dateWithTime, separator, date]);
@@ -61,16 +62,14 @@ const TimeAgo = ({
       differenceInTime < MILLISECOND_DAY * 2 &&
       differenceInTime > MILLISECOND_DAY
     ) {
-      setTimeSinceCreation((timeSinceCreation) => MESSAGE.UNDER_TODAY);
-    } else if (
-      differenceInTime < MILLISECOND_WEEK &&
-      differenceInTime < MILLISECOND_DAY * 3
-    ) {
+      setTimeSinceCreation(MESSAGE.UNDER_TODAY);
+    } else if (differenceInTime < MILLISECOND_DAY * 3) {
       setTimeSinceCreation(daysAgo + MESSAGE.DAYS_AGO);
     } else {
       setTimeSinceCreation(getDateFormat(dateFormat, separator, dateWithTime));
     }
   };
+  // differenceInTime < MILLISECOND_WEEK &&
 
   const getDateFormat = (format, separatorSymbol, hasTime) => {
     const separatorsGroup = /[-/ ]/;
