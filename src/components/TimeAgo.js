@@ -44,7 +44,7 @@ const TimeAgo = ({
   const getDifferenceInTime = () =>
     new Date().getTime() - new Date(date).getTime();
 
-  // Calculate the time of creation
+  // Calculate the time of  creation
   const calculateTime = () => {
     const differenceInTime = getDifferenceInTime();
 
@@ -86,6 +86,11 @@ const TimeAgo = ({
      ${hasTime ? `at ${position(date, "tt")}` : ""}`;
   };
 
+  const getMonthWord = (month, shortLongWord) => {
+    const monthWord = shortLongWord === MMMM ? monthFullName : monthShortName;
+    return monthWord[month];
+  };
+
   const { d, eee, MM, MMM, MMMM, yy, y, tt } = DATE_TYPES;
   function position(date, type) {
     switch (type) {
@@ -119,11 +124,6 @@ const TimeAgo = ({
         throw new Error(`Whoops! ${type} is not valid time symbol.`);
     }
   }
-
-  const getMonthWord = (month, shortLongWord) => {
-    const monthWord = shortLongWord === MMMM ? monthFullName : monthShortName;
-    return monthWord[month];
-  };
 
   return (
     <span className={className}>
